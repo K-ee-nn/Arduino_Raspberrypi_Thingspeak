@@ -1,5 +1,3 @@
-// #include <TinyMLShield.h>
-// #include <TensorFlowLite.h>
 #include <Servo.h>
 #include <Arduino_APDS9960.h>
 #include <String.h>
@@ -7,7 +5,7 @@
 #include <stdint.h>
 #include <stdlib.h>
 
-// set up
+// setup UART and Servo
 UART mySerial(A6,A7,NC,NC); 
 Servo myServo;
 // constants
@@ -90,8 +88,6 @@ void loop() {
     if (APDS.proximityAvailable()) 
     {
       int prox = APDS.readProximity();
-      // Serial.println(prox);
-      // if proximity <= 40
       if (prox < 10) 
       {
         // led becomes red

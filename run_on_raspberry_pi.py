@@ -6,16 +6,16 @@ import string
 
 serial1 = serial.Serial('/dev/ttyUSB0', 9600)
 
-
-channel_ID = "2160141"
+# replace with your channel ID
+channel_ID = ""
 
 # The hostname of the ThingSpeak MQTT broker.
 mqtt_host = "mqtt3.thingspeak.com"
 
-# TASK6: Replace Your MQTT credentials for the device
-mqtt_client_ID = "LgwEOiILAwglDzsbEDk1EQI"
-mqtt_username  = "LgwEOiILAwglDzsbEDk1EQI"
-mqtt_password  = "Ps/+fRLZJ+CyfFImsbM0H9d1"
+# Replace Your MQTT credentials for the device
+mqtt_client_ID = ""
+mqtt_username  = ""
+mqtt_password  = ""
 
 t_transport = "websockets"
 t_port = 80
@@ -29,8 +29,7 @@ while True:
     highest_detected_confidence = float(datastring) 
     # build the payload string.
     payload = "field1=" + str(highest_detected_confidence)
-    #print(payload)
-    # attempt to publish this data to the topic.
+    # attempt to publish this data
     try:
       print ("Writing Payload = ", payload," to host: ", mqtt_host, " clientID= ", mqtt_client_ID, " User ", mqtt_username, " PWD ", mqtt_password)
       publish.single(topic, payload, hostname=mqtt_host, transport=t_transport, port=t_port, \
@@ -38,4 +37,4 @@ while True:
     except Exception as e:
       print(e)
       time.sleep(2)
-ser.close()#end of while loop, close the serial interface
+serial1.close()#end of while loop, close the serial interface
